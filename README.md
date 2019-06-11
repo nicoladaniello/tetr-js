@@ -1,20 +1,54 @@
-# gulp-aperitif
+# Tetr.js
 
-Gulp starter template for new projects. It includes: browser live reloads, SCSS preprocessor, images optimization, JS and CSS bundling and minification.
+Simple implementation of the famous game in javascript.
+This is a simple project made to practice some design techniques in JS.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,1,0,0,0,0,0],
+[0,0,0,1,1,1,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[1,0,0,0,0,0,0,0,0,0],
+[1,1,1,0,0,1,1,0,1,0],
+[1,1,1,1,1,1,0,1,1,1]
+
+The game is a browser
+
+## To do list
+
+- [x] Basic implementation
+- [x] Create blocks and levels
+- [x] Implement blocks movement
+- [x] Implement collision detection
+- [x] Implement start and pause
+- [x] Implement points accumulator
+- [ ] Implement game over
+- [ ] Add other tetromino blocks
 
 ### Installing
 
 Clone the repository
 
 ```
-$ git clone https://github.com/mmode/gulp-aperitif.git project-folder
+$ git clone https://github.com/mmode/tetr-js.git
+$ cd tetr-js
 ```
 
-then from the project folder install the dependencies
+Install the dependencies
 
 ```
 $ npm install
@@ -25,28 +59,6 @@ last run gulp to start the scripts
 ```
 $ gulp
 ```
-
-## Deployment
-
-run the command
-
-```
-$ gulp build
-```
-
-to build the deployment files.
-
-## Dependencies
-
-* del
-* gulp
-* gulp-cache
-* gulp-cssnano
-* gulp-imagemin
-* gulp-sass
-* gulp-uglify
-* gulp-useref
-* run-sequence
 
 ## Author
 

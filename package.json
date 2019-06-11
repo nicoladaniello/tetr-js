@@ -1,7 +1,7 @@
 {
-  "name": "gulp-aperitif",
+  "name": "tetr.js",
   "version": "1.0.0",
-  "description": "Gulp project template.",
+  "description": "Basic implementation of the popular game in javascript",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -20,11 +20,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "wikipedia",
-    "redesign",
-    "freecodecamp",
-    "tribute",
-    "page"
+    "tetrjs",
+    "tetromino",
+    "game",
+    "tetr.js",
+    "js"
   ],
   "author": "Nicola D'Aniello",
   "license": "ISC"
