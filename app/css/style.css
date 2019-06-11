@@ -1,19 +1,12 @@
-html,
-body {
-}
-
 #game {
   display: flex;
   flex: 0 1 auto;
-  justify-content: center;
-}
+  justify-content: center; }
+
 #arena {
   color: transparent;
   background-color: #fafafa;
-  width: auto;
-}
+  width: auto; }
+
 .c1 {
-  color: green;
-}
-.c0 {
-}
+  color: green; }
