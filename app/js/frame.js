@@ -9,10 +9,13 @@ export const keyEnum = Object.freeze({
   arrowDown: 40
 });
 
+const pointsEnum = [0, 10, 20, 50, 100];
+
 class Frame {
-  constructor(level = null, block = null) {
+  constructor(level = null, block = null, points = null) {
     this.level = level ? level : new Level();
     this.block = block ? block : new Block();
+    this.points = points ? points : 0;
   }
   update = e => {
     let newBlock, newFrame;
@@ -20,30 +23,31 @@ class Frame {
       case keyEnum.spaceBar: //spacebar
         newBlock = this.block.rotate();
         newFrame = new Frame(this.level, newBlock);
-        if (newFrame.hasCollision()) return false;
+        if (newFrame._hasCollision()) return false;
         return newFrame;
         break;
       case keyEnum.arrowLeft: //arrow left
         newBlock = this.block.move(new Vec(-1, 0));
         newFrame = new Frame(this.level, newBlock);
-        if (newFrame.hasCollision()) return false;
+        if (newFrame._hasCollision()) return false;
         return newFrame;
         break;
       case keyEnum.arrowRight: //arrow right
         newBlock = this.block.move(new Vec(1, 0));
         newFrame = new Frame(this.level, newBlock);
-        if (newFrame.hasCollision()) return false;
+        if (newFrame._hasCollision()) return false;
         return newFrame;
         break;
       case keyEnum.arrowDown: //arrow down
         newBlock = this.block.move(new Vec(0, 1));
         newFrame = new Frame(this.level, newBlock);
-        if (newFrame.hasCollision()) return this.updateLevel();
+        if (newFrame._hasCollision()) return this.updateLevel();
         return newFrame;
         break;
     }
   };
-  hasCollision = () => {
+
+  _hasCollision = () => {
     const { size: levelSize, state: levelState } = this.level;
     const positions = this.block.blockRelativePositions();
     return (
@@ -51,11 +55,14 @@ class Frame {
       undefined
     );
   };
+
   updateLevel = () => {
     let newLevel = this.level.freezeBlock(this.block);
-    newLevel = newLevel.replaceFullRows();
-    console.log(newLevel);
-    return new Frame(newLevel, new Block());
+    const fullRows = newLevel.countFullRows();
+    if (fullRows) {
+      newLevel = newLevel.replaceFullRows();
+    }
+    return new Frame(newLevel, new Block(), pointsEnum[fullRows]);
   };
 }
 

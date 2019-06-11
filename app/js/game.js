@@ -7,27 +7,35 @@ const gameStatus = Object.freeze({
 });
 
 class Game {
-  constructor(el) {
-    this.screen = new Screen(el);
+  constructor(arena, accumulator) {
+    this.screen = new Screen(arena, accumulator);
     this.timer = 800;
     this.interval = null;
     this.status = gameStatus.stop;
+    this.accumulator = 0;
 
     document.onkeydown = this._event;
     this.currFrame = new Frame();
     this._display();
   }
+
   start = () => {
     this._setStatus(gameStatus.start);
   };
+
   stop = () => {
     this._setStatus(gameStatus.stop);
   };
-  // "private" methods
+
+  /**
+   * "private" methods
+   */
+
   _setStatus = status => {
     this.status = status;
     this._toggleTimer();
   };
+
   _toggleTimer = () => {
     switch (this.status) {
       case gameStatus.start:
@@ -42,15 +50,19 @@ class Game {
         break;
     }
   };
+
   _display = () => {
-    this.screen.draw(this.currFrame);
+    this.screen.draw(this.currFrame, this.accumulator);
   };
+
   _event = e => {
     if (this.status !== gameStatus.start) return;
     if (e instanceof Event) e.preventDefault();
+
     let newFrame = this.currFrame.update(e.keyCode); //return new updated frame
     if (!newFrame) return; // invalid frame, return
     this.currFrame = newFrame;
+    this.accumulator += newFrame.points;
     this._display();
   };
 }

@@ -1,13 +1,15 @@
 class Screen {
-  constructor(domEl) {
-    this.dom = domEl;
+  constructor(arena, accumulator) {
+    this.arena = arena;
+    this.accumulator = accumulator;
   }
-  draw(frame) {
+  draw(frame, points) {
     let { level, block } = frame;
     let view = level.state.map(row => [...row]);
     let unitsPositions = block.blockRelativePositions();
     unitsPositions.map(unitVec => (view[unitVec.y][unitVec.x] = 1)); // freeze block in level
-    this.dom.innerHTML = syntaxHighlight(view);
+    this.arena.innerHTML = syntaxHighlight(view);
+    this.accumulator.innerHTML = points;
   }
 }
 
