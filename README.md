@@ -18,7 +18,7 @@ Gulp is used as task manager, already required in the package file.
 - [x] Implement collision detection
 - [x] Implement start and pause
 - [x] Implement points accumulator
-- [ ] Implement game over
+- [x] Implement game over
 - [ ] Add other tetromino blocks
 
 ### Installing

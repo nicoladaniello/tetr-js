@@ -41,7 +41,7 @@ class Frame {
       case keyEnum.arrowDown: //arrow down
         newBlock = this.block.move(new Vec(0, 1));
         newFrame = new Frame(this.level, newBlock);
-        if (newFrame._hasCollision()) return this.updateLevel();
+        if (newFrame._hasCollision()) return this._updateLevel();
         return newFrame;
         break;
     }
@@ -49,14 +49,21 @@ class Frame {
 
   _hasCollision = () => {
     const { size: levelSize, state: levelState } = this.level;
-    const positions = this.block.blockRelativePositions();
+    const positions = this.block.relativePositions();
     return (
       positions.find(vec => collisionChecker(levelState, levelSize, vec)) !=
       undefined
     );
   };
 
-  updateLevel = () => {
+  /**
+   * _updateLevel()
+   * called when the block collided with the floor.
+   * Freezes the block and replace any full row.
+   *
+   * @returns a new Frame with the updated level, a mew block and any collected points.
+   */
+  _updateLevel = () => {
     let newLevel = this.level.freezeBlock(this.block);
     const fullRows = newLevel.countFullRows();
     if (fullRows) {

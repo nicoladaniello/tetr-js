@@ -20,7 +20,7 @@ class Block {
     }
     return new Block(newState, this.pos);
   };
-  blockRelativePositions = () => {
+  relativePositions = () => {
     let result = new Array();
     for (let i = 0; i < blockSize; i++) {
       for (let j = 0; j < blockSize; j++) {

@@ -10,7 +10,7 @@ class Level {
   }
   freezeBlock(block) {
     let newState = this.state.map(row => [...row]);
-    let unitsPositions = block.blockRelativePositions();
+    let unitsPositions = block.relativePositions();
     unitsPositions.map(unitVec => (newState[unitVec.y][unitVec.x] = 1)); // freeze block in level
     return new Level(newState);
   }

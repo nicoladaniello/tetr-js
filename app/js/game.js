@@ -2,29 +2,40 @@ import Screen from "./screen.js";
 import Frame, { keyEnum } from "./frame.js";
 
 const gameStatus = Object.freeze({
-  stop: 0,
-  start: 1
+  pause: 0,
+  start: 1,
+  over: 2
 });
 
 class Game {
   constructor(arena, accumulator) {
     this.screen = new Screen(arena, accumulator);
+    this.reset();
+  }
+
+  start = () => {
+    if (this.status === gameStatus.over) this.reset();
+    this._setStatus(gameStatus.start);
+  };
+
+  pause = () => {
+    this._setStatus(gameStatus.pause);
+  };
+
+  over = () => {
+    this._setStatus(gameStatus.over);
+    alert("Game over: total point: " + this.accumulator);
+  };
+
+  reset = () => {
     this.timer = 800;
     this.interval = null;
-    this.status = gameStatus.stop;
+    this.status = gameStatus.pause;
     this.accumulator = 0;
 
     document.onkeydown = this._event;
     this.currFrame = new Frame();
     this._display();
-  }
-
-  start = () => {
-    this._setStatus(gameStatus.start);
-  };
-
-  stop = () => {
-    this._setStatus(gameStatus.stop);
   };
 
   /**
@@ -45,7 +56,7 @@ class Game {
         );
         break;
 
-      case gameStatus.stop:
+      case gameStatus.pause:
         clearInterval(this.interval);
         break;
     }
@@ -61,6 +72,11 @@ class Game {
 
     let newFrame = this.currFrame.update(e.keyCode); //return new updated frame
     if (!newFrame) return; // invalid frame, return
+    if (newFrame._hasCollision()) {
+      // game is lost.
+      this.over();
+      return;
+    }
     this.currFrame = newFrame;
     this.accumulator += newFrame.points;
     this._display();
