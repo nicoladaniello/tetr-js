@@ -74,8 +74,7 @@ class Game {
     if (!newFrame) return; // invalid frame, return
     if (newFrame._hasCollision()) {
       // game is lost.
-      this.over();
-      return;
+      return this.over();
     }
     this.currFrame = newFrame;
     this.accumulator += newFrame.points;

@@ -1,15 +1,16 @@
 import Vec from "./vec.js";
+import { copyState } from "./utils.js";
 
 const levelWidth = 10;
 const levelHeight = 20;
 
 class Level {
   constructor(state = null) {
-    this.state = state ? state : this.newState();
+    this.state = state ? copyState(state) : this.newState();
     this.size = new Vec(levelWidth, levelHeight);
   }
   freezeBlock(block) {
-    let newState = this.state.map(row => [...row]);
+    let newState = copyState(this.state);
     let unitsPositions = block.relativePositions();
     unitsPositions.map(unitVec => (newState[unitVec.y][unitVec.x] = 1)); // freeze block in level
     return new Level(newState);

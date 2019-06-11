@@ -1,3 +1,5 @@
+import { copyState } from "./utils.js";
+
 class Screen {
   constructor(arena, accumulator) {
     this.arena = arena;
@@ -5,7 +7,7 @@ class Screen {
   }
   draw(frame, points) {
     let { level, block } = frame;
-    let view = level.state.map(row => [...row]);
+    let view = copyState(level.state);
     let unitsPositions = block.relativePositions();
     unitsPositions.map(unitVec => (view[unitVec.y][unitVec.x] = 1)); // freeze block in level
     this.arena.innerHTML = syntaxHighlight(view);
