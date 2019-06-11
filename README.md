@@ -5,28 +5,10 @@ This is a simple project made to practice some design techniques in JS.
 
 ## Getting Started
 
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,1,0,0,0,0,0],  
-[0,0,0,1,1,1,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[0,0,0,0,0,0,0,0,0,0],  
-[1,0,0,0,0,0,0,0,0,0],  
-[1,1,1,0,0,1,1,0,1,0],  
-[1,1,1,1,1,1,0,1,1,1]
+The game works on any modern browser.
+Gulp is used as task manager, already required in the package file.
 
-The game is a browser
+![tetr.js](https://github.com/nicoladaniello/tetr-js/blob/master/screenshot/screen1.png)
 
 ## To do list
 
