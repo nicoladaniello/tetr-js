@@ -2,6 +2,13 @@ import Vec from "./vec.js";
 import Block from "./block.js";
 import Level from "./level.js";
 
+export const keyEnum = Object.freeze({
+  spaceBar: 32,
+  arrowLeft: 37,
+  arrowRight: 39,
+  arrowDown: 40
+});
+
 class Frame {
   constructor(level = null, block = null) {
     this.level = level ? level : new Level();
@@ -10,25 +17,25 @@ class Frame {
   update = e => {
     let newBlock, newFrame;
     switch (e) {
-      case 32: //spacebar
+      case keyEnum.spaceBar: //spacebar
         newBlock = this.block.rotate();
         newFrame = new Frame(this.level, newBlock);
         if (newFrame.hasCollision()) return false;
         return newFrame;
         break;
-      case 37: //arrow left
+      case keyEnum.arrowLeft: //arrow left
         newBlock = this.block.move(new Vec(-1, 0));
         newFrame = new Frame(this.level, newBlock);
         if (newFrame.hasCollision()) return false;
         return newFrame;
         break;
-      case 39: //arrow right
+      case keyEnum.arrowRight: //arrow right
         newBlock = this.block.move(new Vec(1, 0));
         newFrame = new Frame(this.level, newBlock);
         if (newFrame.hasCollision()) return false;
         return newFrame;
         break;
-      case 40: //arrow down
+      case keyEnum.arrowDown: //arrow down
         newBlock = this.block.move(new Vec(0, 1));
         newFrame = new Frame(this.level, newBlock);
         if (newFrame.hasCollision()) return this.updateLevel();
